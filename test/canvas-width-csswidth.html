@@ -1,0 +1,59 @@
+<!--
+ * @Author: your Name
+ * @Date: 2021-03-15 20:31:15
+ * @LastEditors: your Name
+ * @LastEditTime: 2021-03-15 20:47:14
+ * @Description: 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas {
+      width: 150px;
+      height: 150px;
+      background-color: pink;
+    }
+
+    #canvas1 {
+      width: 150px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas1"></canvas>
+  <canvas id="canvas2"></canvas>
+  <script>
+
+    function drawLine(canvas) {
+      canvas.width = 200;
+      canvas.height = 200;
+      var ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.moveTo(125, 125);
+      ctx.lineTo(125, 45);
+      ctx.lineTo(45, 125);
+      ctx.closePath();
+      ctx.stroke();
+    }
+    let canvas1 = document.getElementById('canvas1');
+    let canvas2 = document.getElementById('canvas2');
+    drawLine(canvas1)
+    drawLine(canvas2)
+
+    window.onclick = function() {
+      let imgData = canvas1.toDataURL('image/png', 1);
+      let img = new Image();
+      img.src = imgData;
+      document.body.appendChild(img);
+    }
+    
+  </script>
+</body>
+</html>
